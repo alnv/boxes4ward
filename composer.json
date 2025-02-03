@@ -9,7 +9,7 @@
     {
       "name": "Christoph Wiechert",
       "email": "cw@4wardmedia.de",
-      "homepage": "http://4wardmedia.de",
+      "homepage": "https://4wardmedia.de",
       "role": "Developer"
     }
   ],
@@ -20,25 +20,25 @@
     "irc": "irc://irc.freenode.org/contao.dev",
     "source": "https://github.com/psi-4ward/boxes4ward"
   },
+  "autoload": {
+    "psr-4": {
+      "Psi\\Boxes4wardBundle\\": "src/"
+    },
+    "classmap": [
+      "src/Resources/contao/"
+    ]
+  },
   "require": {
-    "php": ">=5.3",
-    "contao/core-bundle": "~3.1 || ~4.4",
-    "contao-community-alliance/composer-plugin": "~2.4 || ~3.0"
-  },
-  "replace": {
-    "contao-legacy/boxes4ward": "self.version"
-  },
-  "conflict": {
-    "contao/core": "3.0.*"
+    "php": "^8.1",
+    "contao/core-bundle": "~4.13 || ~5.0",
+    "contao/news-bundle": "~4.13 || ~5.0"
   },
   "extra": {
     "contao": {
       "sources": {
-        "": "system/modules/boxes4ward"
-      },
-      "runonce": [
-        "runonce/30update.php"
-      ]
-    }
+        "": "system/modules/contao-psi-boxes4ward-bundle"
+      }
+    },
+    "contao-manager-plugin": "Psi\\Boxes4wardBundle\\ContaoManager\\Plugin"
   }
 }

@@ -1,11 +1,17 @@
 {
-  "name": "psi/boxes4ward",
+  "name": "alnv/boxes4ward",
   "description": "Archive, page and time based content boxes for Contao",
   "keywords": ["content", "contao"],
   "type": "contao-module",
   "homepage": "https://github.com/psi-4ward/boxes4ward",
   "license": "LGPL-3.0+",
   "authors": [
+    {
+      "name": "Alexander Naumov",
+      "email": "mail@alexandernaumov.de",
+      "homepage": "https://alexandernaumov.de",
+      "role": "Developer"
+    },
     {
       "name": "Christoph Wiechert",
       "email": "cw@4wardmedia.de",

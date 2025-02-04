@@ -34,6 +34,7 @@ class Boxes4ward extends Module
 
     public function generate()
     {
+
         if (System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest(System::getContainer()->get('request_stack')->getCurrentRequest() ?? Request::create(''))) {
 
             $objTemplate = new BackendTemplate('be_wildcard');
@@ -62,7 +63,8 @@ class Boxes4ward extends Module
         if (!$blnPreviewMode) $where['published=?'] = '1';
 
         // fetch articles
-        $objArticle = $this->Database->prepare('SELECT * FROM tl_boxes4ward_article WHERE ' . implode(' AND ', array_keys($where)) . ' ORDER BY sorting')->execute(\array_values($where));
+        $arrQueries = \array_values($where);
+        $objArticle = $this->Database->prepare('SELECT * FROM tl_boxes4ward_article WHERE ' . implode(' AND ', array_keys($where)) . ' ORDER BY sorting')->execute(...$arrQueries);
         if (!$objArticle->numRows) return;
 
         // filter articles to matching pages and generate its content elements
@@ -87,7 +89,7 @@ class Boxes4ward extends Module
                 continue;
             }
 
-            if ($objNews = NewsModel::findByIdOrAlias(Input::get('items'))) {
+            if ($objNews = NewsModel::findByIdOrAlias((Input::get('items') ?? ''))) {
                 $objArticle->news = StringUtil::deserialize($objArticle->news, true);
                 if (!(in_array($objNews->id, $objArticle->news))) continue;
             }

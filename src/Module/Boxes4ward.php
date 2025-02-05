@@ -89,7 +89,8 @@ class Boxes4ward extends Module
                 continue;
             }
 
-            if ($objNews = NewsModel::findByIdOrAlias((Input::get('items') ?? ''))) {
+            $strItem = (Input::get('items') ?? '');
+            if ($strItem && ($objNews = NewsModel::findByIdOrAlias($strItem))) {
                 $objArticle->news = StringUtil::deserialize($objArticle->news, true);
                 if (!(in_array($objNews->id, $objArticle->news))) continue;
             }
